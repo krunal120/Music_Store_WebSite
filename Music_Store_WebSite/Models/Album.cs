@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 namespace Music_Store_WebSite.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-    using System.Web.Mvc;
+   
 
-    [Bind(Exclude = "AlbumId")]
+   // [Bind(Exclude = "AlbumId")]
     public partial class Album
     {
         //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -26,6 +26,8 @@ namespace Music_Store_WebSite.Models
         //    this.OrderDetails = new HashSet<OrderDetail>();
         //}
         [ScaffoldColumn(false)]
+        //[HiddenInput]
+        //[Key]
         public int AlbumId { get; set; }
         [DisplayName("Genre")]
         public int GenreId { get; set; }

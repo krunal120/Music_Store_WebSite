@@ -7,7 +7,7 @@ using Music_Store_WebSite.Models;
 
 namespace Music_Store_WebSite.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class CheckoutController : Controller
     {
         MvcDBMusicEntities1 storeDB = new MvcDBMusicEntities1();

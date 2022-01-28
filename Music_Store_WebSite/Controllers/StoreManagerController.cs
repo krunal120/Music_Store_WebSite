@@ -10,12 +10,12 @@ using Music_Store_WebSite.Models;
 
 namespace Music_Store_WebSite.Controllers
 {
-  //  [Authorize(Roles = "Administrator")]
+    //[Authorize(Roles = "Adminstrator")]
     public class StoreManagerController : Controller
     {
         private MvcDBMusicEntities1 db = new MvcDBMusicEntities1();
 
-        // GET: StoreManager
+        // GET: StoreManager // retrive the list of albums includs genre and artist
         public ActionResult Index()
         {
             var albums = db.Albums.Include(a => a.Artist).Include(a => a.Genre);
@@ -25,15 +25,16 @@ namespace Music_Store_WebSite.Controllers
         // GET: StoreManager/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Album album = db.Albums.Find(id);
-            if (album == null)
-            {
-                return HttpNotFound();
-            }
+            //if (id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
+            Album album = db.Albums.Find(id)
+;
+            //if (album == null)
+            //{
+            //    return HttpNotFound();
+            //}
             return View(album);
         }
 
@@ -46,11 +47,11 @@ namespace Music_Store_WebSite.Controllers
         }
 
         // POST: StoreManager/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AlbumId,GenreId,ArtistId,Title,Price,AlbumArtUrl")] Album album)
+        public ActionResult Create(/*[Bind(Include = "AlbumId,GenreId,ArtistId,Title,Price,AlbumArtUrl")]*/ Album album)
         {
             if (ModelState.IsValid)
             {
@@ -67,26 +68,27 @@ namespace Music_Store_WebSite.Controllers
         // GET: StoreManager/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Album album = db.Albums.Find(id);
-            if (album == null)
-            {
-                return HttpNotFound();
-            }
+            //if (id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
+            Album album = db.Albums.Find(id)
+;
+            //if (album == null)
+            //{
+            //    return HttpNotFound();
+            //}
             ViewBag.ArtistId = new SelectList(db.Artists, "ArtistId", "Name", album.ArtistId);
             ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "Name", album.GenreId);
             return View(album);
         }
 
         // POST: StoreManager/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AlbumId,GenreId,ArtistId,Title,Price,AlbumArtUrl")] Album album)
+        public ActionResult Edit(/*[Bind(Include = "AlbumId,GenreId,ArtistId,Title,Price,AlbumArtUrl")] */Album album)
         {
             if (ModelState.IsValid)
             {
@@ -99,27 +101,29 @@ namespace Music_Store_WebSite.Controllers
             return View(album);
         }
 
-        // GET: StoreManager/Delete/5   
+        // GET: StoreManager/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Album album = db.Albums.Find(id);
-            if (album == null)
-            {
-                return HttpNotFound();
-            }
+            //if (id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
+            Album album = db.Albums.Find(id)
+;
+            //if (album == null)
+            //{
+            //    return HttpNotFound();
+            //}
             return View(album);
         }
 
         // POST: StoreManager/Delete/5
         [HttpPost, ActionName("Delete")]
-      // [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Album album = db.Albums.Find(id);
+            Album album = db.Albums.Find(id)
+;
             db.Albums.Remove(album);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -127,11 +131,13 @@ namespace Music_Store_WebSite.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
-            {
-                db.Dispose();
-            }
+
+
+            db.Dispose();
+
             base.Dispose(disposing);
         }
+
+
     }
 }
